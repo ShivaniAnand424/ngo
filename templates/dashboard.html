@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="bg-white p-8 rounded-lg shadow-md border-t-4 border-blue-600">
+    <h1 class="text-3xl font-bold text-gray-800">Welcome, {{ name }}!</h1>
+    <p class="text-blue-600 font-medium mb-6 italic">Logged in as: {{ role.capitalize() }}</p>
+
+    <div class="grid md:grid-cols-2 gap-6">
+        
+        {% if role == 'senior' %}
+        <div class="bg-blue-50 p-6 rounded-lg border border-blue-200">
+            <h2 class="text-xl font-bold mb-3 text-blue-800">Support Services</h2>
+            <ul class="space-y-3">
+                <li class="bg-white p-3 rounded shadow-sm">🏥 Request Medical Help</li>
+                <li class="bg-white p-3 rounded shadow-sm">⚖️ Legal Counseling</li>
+                <li class="bg-white p-3 rounded shadow-sm">🤝 Find a Companion</li>
+            </ul>
+        </div>
+        {% endif %}
+
+        {% if role == 'donor' %}
+        <div class="bg-green-50 p-6 rounded-lg border border-green-200">
+            <h2 class="text-xl font-bold mb-3 text-green-800">Your Impact</h2>
+            <ul class="space-y-3">
+                <li class="bg-white p-3 rounded shadow-sm">💰 Make a Donation</li>
+                <li class="bg-white p-3 rounded shadow-sm">🙋 Register as Volunteer</li>
+                <li class="bg-white p-3 rounded shadow-sm">📊 View NGO Reports</li>
+            </ul>
+        </div>
+        {% endif %}
+
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,206 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- HERO BANNER - Clean Gradient Style -->
+<div class="relative overflow-hidden rounded-3xl mb-16">
+    
+    <!-- Background gradient + decorative circles -->
+    <div class="bg-gradient-to-br from-orange-600 via-orange-500 to-amber-400 px-12 py-10 text-white text-center relative">
+        
+        <!-- Decorative circles -->
+        <div class="absolute top-0 left-0 w-64 h-64 bg-white/10 rounded-full -translate-x-32 -translate-y-32"></div>
+        <div class="absolute bottom-0 right-0 w-48 h-48 bg-white/10 rounded-full translate-x-24 translate-y-24"></div>
+        <div class="absolute top-1/2 left-10 w-16 h-16 bg-white/10 rounded-full"></div>
+        <div class="absolute top-8 right-20 w-8 h-8 bg-white/20 rounded-full"></div>
+
+        <!-- Content -->
+        <div class="relative z-10">
+            <!-- Breadcrumb -->
+            <div class="flex items-center justify-center gap-2 text-orange-100 text-sm mb-6">
+                <a href="/" class="hover:text-white transition">Home</a>
+                <span>›</span>
+                <span class="text-white font-semibold">About Us</span>
+            </div>
+
+            <h1 class="text-5xl md:text-6xl font-extrabold mb-4 drop-shadow-sm">Our Story</h1>
+            <p class="text-orange-100 italic text-lg mb-8">"Serving those who served us since 2017"</p>
+
+            <!-- 3 quick stat pills -->
+            <div class="flex flex-wrap justify-center gap-4 mt-4">
+                <div class="bg-white/20 backdrop-blur-sm px-6 py-2 rounded-full text-sm font-bold">
+                    🏅 Est. 2017
+                </div>
+                <div class="bg-white/20 backdrop-blur-sm px-6 py-2 rounded-full text-sm font-bold">
+                    👵 20,000+ Members
+                </div>
+                <div class="bg-white/20 backdrop-blur-sm px-6 py-2 rounded-full text-sm font-bold">
+                    📍 Nagpur, Maharashtra
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="max-w-6xl mx-auto px-4">
+
+    <!-- MISSION & VISION -->
+    <div class="grid md:grid-cols-2 gap-12 items-center mb-24 fade-in">
+
+        <!-- Column 1: Text -->
+        <div class="space-y-6">
+            <span class="text-orange-500 font-semibold uppercase tracking-widest text-sm">Our Purpose</span>
+            <h2 class="text-4xl font-bold text-gray-800 mt-2 leading-tight border-l-4 border-orange-500 pl-4">
+                Mission & Vision
+            </h2>
+            <p class="text-gray-700 text-lg leading-relaxed">
+                <strong>Jyeshtha Nagarik Pratishthan (JNP)</strong> is a registered charitable organization dedicated to the welfare and empowerment of senior citizens, differently-abled individuals, and orphaned communities in Nagpur.
+            </p>
+            <p class="text-gray-600 text-lg leading-relaxed">
+                Under the visionary leadership of our President, <strong>Hon. Shri Nitin Gadkari</strong>, we work to ensure every elder lives a life of dignity, health, and joy.
+            </p>
+        </div>
+
+        <!-- Column 2: Image -->
+        <div class="relative group">
+            <div class="absolute -inset-2 bg-gradient-to-r from-orange-500 to-yellow-400 rounded-3xl blur opacity-20 group-hover:opacity-40 transition duration-700"></div>
+            <div class="relative w-full h-96 overflow-hidden rounded-3xl shadow-2xl border-4 border-white">
+                <img src="{{ url_for('static', filename='dr.jpg') }}" 
+                     alt="JNP Legal Center" 
+                     class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+            </div>
+        </div>
+
+    </div>
+
+    <!-- HOW WE SUPPORT -->
+    <div class="mb-24 fade-in">
+        <div class="text-center mb-12">
+            <span class="text-orange-500 font-semibold uppercase tracking-widest text-sm">Our Work</span>
+            <h2 class="text-4xl font-bold text-gray-800 mt-2">How We Support Our Elders</h2>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="group bg-white p-10 rounded-3xl shadow-lg hover:shadow-2xl transition-all border border-gray-100 text-center hover:-translate-y-2">
+                <div class="w-16 h-16 bg-orange-100 rounded-2xl flex items-center justify-center text-4xl mx-auto mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">⚖️</div>
+                <h4 class="text-xl font-bold mb-3 text-gray-800">Legal Counseling</h4>
+                <p class="text-gray-500 text-sm leading-relaxed">Free guidance for property matters and family disputes through our expert legal team.</p>
+                <div class="mt-6 h-1 w-12 bg-orange-500 rounded-full mx-auto group-hover:w-24 transition-all duration-300"></div>
+            </div>
+
+            <div class="group bg-orange-600 p-10 rounded-3xl shadow-xl hover:shadow-2xl transition-all text-white text-center hover:-translate-y-2 relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -translate-y-16 translate-x-16"></div>
+                <div class="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center text-4xl mx-auto mb-6">🏥</div>
+                <h4 class="text-xl font-bold mb-3">Medical Help</h4>
+                <p class="text-white/80 text-sm leading-relaxed">Coordination for healthcare services and medical camps across Maharashtra.</p>
+                <div class="mt-6 h-1 w-12 bg-white/60 rounded-full mx-auto group-hover:w-24 transition-all duration-300"></div>
+            </div>
+
+            <div class="group bg-white p-10 rounded-3xl shadow-lg hover:shadow-2xl transition-all border border-gray-100 text-center hover:-translate-y-2">
+                <div class="w-16 h-16 bg-orange-100 rounded-2xl flex items-center justify-center text-4xl mx-auto mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">🎨</div>
+                <h4 class="text-xl font-bold mb-3 text-gray-800">Cultural Events</h4>
+                <p class="text-gray-500 text-sm leading-relaxed">Annual Sanskritik Mahotsav with national artists, completely free for all seniors.</p>
+                <div class="mt-6 h-1 w-12 bg-orange-500 rounded-full mx-auto group-hover:w-24 transition-all duration-300"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TIMELINE -->
+    <div class="mb-24 fade-in">
+        <div class="text-center mb-12">
+            <span class="text-orange-500 font-semibold uppercase tracking-widest text-sm">Our Journey</span>
+            <h2 class="text-4xl font-bold text-gray-800 mt-2">Milestones Over the Years</h2>
+        </div>
+
+        <div class="relative border-l-4 border-orange-500 ml-6 space-y-10">
+            <div class="relative pl-8">
+                <div class="absolute -left-3 top-1 w-5 h-5 bg-orange-500 rounded-full border-4 border-white shadow"></div>
+                <span class="text-xs font-bold text-orange-500 uppercase tracking-widest">2017</span>
+                <h4 class="text-lg font-bold text-gray-800 mt-1">Foundation Established</h4>
+                <p class="text-gray-500 text-sm mt-1">JNP was founded with a mission to serve senior citizens of Nagpur under the leadership of Hon. Shri Nitin Gadkari.</p>
+            </div>
+            <div class="relative pl-8">
+                <div class="absolute -left-3 top-1 w-5 h-5 bg-orange-500 rounded-full border-4 border-white shadow"></div>
+                <span class="text-xs font-bold text-orange-500 uppercase tracking-widest">2019</span>
+                <h4 class="text-lg font-bold text-gray-800 mt-1">100+ Mandals Connected</h4>
+                <p class="text-gray-500 text-sm mt-1">Expanded our network to over 100 local senior citizen mandals across Nagpur district.</p>
+            </div>
+            <div class="relative pl-8">
+                <div class="absolute -left-3 top-1 w-5 h-5 bg-orange-500 rounded-full border-4 border-white shadow"></div>
+                <span class="text-xs font-bold text-orange-500 uppercase tracking-widest">2021</span>
+                <h4 class="text-lg font-bold text-gray-800 mt-1">Legal & Medical Centers Launched</h4>
+                <p class="text-gray-500 text-sm mt-1">Free legal counseling and medical camps started for all registered senior members.</p>
+            </div>
+            <div class="relative pl-8">
+                <div class="absolute -left-3 top-1 w-5 h-5 bg-orange-600 rounded-full border-4 border-white shadow ring-2 ring-orange-300"></div>
+                <span class="text-xs font-bold text-orange-500 uppercase tracking-widest">2024 – Present</span>
+                <h4 class="text-lg font-bold text-gray-800 mt-1">20,000+ Members & Growing</h4>
+                <p class="text-gray-500 text-sm mt-1">Today we proudly serve over 20,000 senior citizens through 203+ mandals across the region.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- COMMUNITY IN ACTION -->
+    <div class="mb-24 fade-in">
+        <div class="text-center mb-8">
+            <span class="text-orange-500 font-semibold uppercase tracking-widest text-sm">Gallery</span>
+            <h2 class="text-4xl font-bold text-gray-800 mt-2">Community in Action</h2>
+        </div>
+        <div class="relative group w-full h-96 overflow-hidden rounded-3xl shadow-2xl border-4 border-white">
+            <img src="{{ url_for('static', filename='legal.jpg') }}" 
+                 alt="JNP Cultural Event" 
+                 class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+            <div class="absolute bottom-6 left-6 text-white">
+                <p class="text-sm font-bold uppercase tracking-widest text-orange-300">Sanskritik Mahotsav 2024</p>
+                <p class="text-lg font-bold">Annual Cultural Festival, Nagpur</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA BANNER -->
+    <div class="bg-gradient-to-r from-orange-500 to-orange-700 rounded-3xl p-12 text-center text-white mb-10 shadow-2xl fade-in relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -translate-y-32 translate-x-32"></div>
+        <div class="absolute bottom-0 left-0 w-48 h-48 bg-white/10 rounded-full translate-y-24 -translate-x-24"></div>
+        <div class="relative z-10">
+            <h2 class="text-3xl md:text-4xl font-extrabold mb-4">Ready to Contribute?</h2>
+            <p class="text-white/80 text-lg mb-8 max-w-xl mx-auto">Join us as a volunteer or donor to make a difference in the lives of Nagpur's senior citizens.</p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="/register" class="bg-white text-orange-600 px-10 py-4 rounded-xl font-bold text-lg hover:bg-orange-50 transition-all shadow-lg hover:shadow-xl">
+                    Join Our Community
+                </a>
+                <a href="/contact" class="border-2 border-white text-white px-10 py-4 rounded-xl font-bold text-lg hover:bg-white/10 transition-all">
+                    Contact Us
+                </a>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- ANIMATIONS -->
+<style>
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+</style>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+{% endblock %}

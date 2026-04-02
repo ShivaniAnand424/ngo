@@ -1,0 +1,200 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- HERO SECTION -->
+<div class="relative w-full h-screen max-h-[650px] flex items-center justify-center overflow-hidden rounded-3xl mb-20 shadow-2xl">
+    
+    <img src="{{ url_for('static', filename='community.jpg') }}" 
+         class="absolute inset-0 w-full h-full object-cover scale-105 transition-transform duration-[10s] hover:scale-100" 
+         alt="JNP Community Gathering">
+
+    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+
+    <!-- Floating badge -->
+    <div class="absolute top-8 left-8 bg-orange-500/90 backdrop-blur-sm text-white text-xs font-bold px-4 py-2 rounded-full shadow-lg animate-pulse">
+        🏅 Serving Since 2017
+    </div>
+
+    <div class="relative z-10 text-center px-6 max-w-4xl">
+        <p class="text-white font-semibold tracking-widest uppercase text-sm mb-4">Jyeshtha Nagrik Pratishthan, Nagpur</p>
+        <h1 class="text-5xl md:text-7xl font-extrabold text-white mb-6 leading-tight drop-shadow-2xl">
+            Empowering Lives, <br>
+            <span class="text-orange-400">Enriching Souls</span>
+        </h1>
+        <p class="text-lg md:text-xl text-gray-200 mb-10 font-medium max-w-2xl mx-auto leading-relaxed">
+            A dedicated platform bringing joy, health, and dignity to the senior citizens of Nagpur.
+        </p>
+        
+        <div class="flex flex-wrap justify-center gap-4">
+            <a href="/register" class="bg-orange-500 text-white px-10 py-4 rounded-xl font-bold text-lg hover:bg-orange-600 active:scale-95 transition-all transform hover:scale-105 shadow-2xl">
+                Register Now
+            </a>
+            <a href="/about" class="backdrop-blur-md border-2 border-white/50 text-white px-10 py-4 rounded-xl font-bold text-lg hover:bg-white hover:text-gray-900 active:scale-95 transition-all transform hover:scale-105">
+                Learn More
+            </a>
+        </div>
+    </div>
+
+    <!-- Scroll down indicator -->
+    <div class="absolute bottom-6 left-1/2 -translate-x-1/2 text-white/60 flex flex-col items-center gap-1 animate-bounce">
+        <span class="text-xs tracking-widest uppercase">Scroll</span>
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+        </svg>
+    </div>
+</div>
+
+<div class="max-w-6xl mx-auto px-4">
+
+    <!-- STATS BAR -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-20 fade-in">
+        <div class="bg-orange-50 border-b-4 border-orange-500 p-6 rounded-2xl text-center">
+            <div class="text-4xl font-black text-orange-600 counter" data-target="203">0</div>
+            <div class="text-xs text-gray-500 font-bold uppercase tracking-widest mt-1">Local Mandals</div>
+        </div>
+        <div class="bg-orange-50 border-b-4 border-orange-500 p-6 rounded-2xl text-center">
+            <div class="text-4xl font-black text-orange-600 counter" data-target="20000">0</div>
+            <div class="text-xs text-gray-500 font-bold uppercase tracking-widest mt-1">Elders Served</div>
+        </div>
+        <div class="bg-orange-50 border-b-4 border-orange-500 p-6 rounded-2xl text-center">
+            <div class="text-4xl font-black text-orange-600 counter" data-target="7">0</div>
+            <div class="text-xs text-gray-500 font-bold uppercase tracking-widest mt-1">Years of Service</div>
+        </div>
+        <div class="bg-orange-50 border-b-4 border-orange-500 p-6 rounded-2xl text-center">
+            <div class="text-4xl font-black text-orange-600 counter" data-target="500">0</div>
+            <div class="text-xs text-gray-500 font-bold uppercase tracking-widest mt-1">Volunteers</div>
+        </div>
+    </div>
+
+    <!-- LEADERSHIP SECTION -->
+    <div class="grid md:grid-cols-2 gap-16 items-center mb-24 fade-in">
+        <div class="order-2 md:order-1">
+            <span class="text-orange-500 font-semibold uppercase tracking-widest text-sm">Our Foundation</span>
+            <h2 class="text-4xl font-bold text-gray-800 mt-2 mb-6 leading-tight">
+                Leadership with <br><span class="text-orange-600">Heart and Purpose</span>
+            </h2>
+            <p class="text-gray-600 text-lg leading-relaxed mb-6">
+                Under the guidance of <strong>Hon. Shri Nitin Gadkari</strong>, JNP Nagpur serves as a cornerstone for 20,000+ elders, ensuring no senior citizen faces their golden years alone.
+            </p>
+            <p class="text-gray-500 leading-relaxed mb-8">
+                Our network of 203 local mandals across Nagpur works tirelessly to provide healthcare, legal aid, social activities, and emotional support to every elder in need.
+            </p>
+            <a href="/about" class="inline-flex items-center gap-2 bg-orange-600 text-white px-8 py-3 rounded-xl font-bold hover:bg-orange-700 transition-all hover:gap-4">
+                Read Our Story <span>→</span>
+            </a>
+        </div>
+
+        <div class="order-1 md:order-2">
+            <div class="relative group">
+                <div class="absolute -inset-2 bg-gradient-to-r from-orange-600 to-yellow-400 rounded-3xl blur opacity-25 group-hover:opacity-50 transition duration-700"></div>
+                <div class="relative overflow-hidden rounded-3xl shadow-2xl h-96 bg-white">
+                    <img src="{{ url_for('static', filename='leadership.jpg') }}" 
+                         alt="JNP Leadership" 
+                         class="w-full h-full object-cover object-top transform group-hover:scale-105 transition duration-700">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CARDS SECTION -->
+    <div class="text-center mb-12 fade-in">
+        <span class="text-orange-500 font-semibold uppercase tracking-widest text-sm">Get Involved</span>
+        <h2 class="text-3xl font-bold text-gray-800 mt-2">How Can We Help You?</h2>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8 mb-24 fade-in">
+        <div class="group bg-white p-10 rounded-3xl shadow-lg hover:shadow-2xl transition-all border border-gray-100 text-center hover:-translate-y-2">
+            <div class="w-16 h-16 bg-orange-100 text-orange-600 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">👵</div>
+            <h3 class="text-xl font-bold mb-3 text-gray-800">For Seniors</h3>
+            <p class="text-gray-500 mb-6 text-sm leading-relaxed">Access specialized healthcare, legal support, and social activities designed for you.</p>
+            <a href="/register" class="inline-flex items-center gap-1 text-orange-600 font-bold hover:text-orange-700 hover:gap-3 transition-all">Apply Today <span>→</span></a>
+        </div>
+
+        <div class="bg-orange-600 p-10 rounded-3xl shadow-xl hover:shadow-2xl transition-all text-white text-center transform hover:-translate-y-2 relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -translate-y-16 translate-x-16"></div>
+            <div class="w-16 h-16 bg-white/20 text-white rounded-2xl flex items-center justify-center text-3xl mx-auto mb-6">🤝</div>
+            <h3 class="text-xl font-bold mb-3">For Donors</h3>
+            <p class="text-white/80 mb-6 text-sm leading-relaxed">Your contribution directly funds medical camps, events, and daily support for our elders.</p>
+            <a href="/login" class="bg-white text-orange-600 px-8 py-3 rounded-full font-bold inline-block shadow-md hover:bg-orange-50 transition-all hover:shadow-xl">Donate Now</a>
+        </div>
+
+        <div class="group bg-white p-10 rounded-3xl shadow-lg hover:shadow-2xl transition-all border border-gray-100 text-center hover:-translate-y-2">
+            <div class="w-16 h-16 bg-orange-100 text-orange-600 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">🧡</div>
+            <h3 class="text-xl font-bold mb-3 text-gray-800">Volunteers</h3>
+            <p class="text-gray-500 mb-6 text-sm leading-relaxed">Join our team and help organize events, medical camps, and outreach programs.</p>
+            <a href="/register" class="inline-flex items-center gap-1 text-orange-600 font-bold hover:text-orange-700 hover:gap-3 transition-all">Join Team <span>→</span></a>
+        </div>
+    </div>
+
+    <!-- CTA BANNER -->
+    <div class="bg-gradient-to-r from-orange-500 to-orange-700 rounded-3xl p-12 text-center text-white mb-20 shadow-2xl fade-in">
+        <h2 class="text-3xl md:text-4xl font-extrabold mb-4">Ready to Make a Difference?</h2>
+        <p class="text-white/80 text-lg mb-8 max-w-xl mx-auto">Join thousands of volunteers and supporters who are transforming the lives of Nagpur's senior citizens.</p>
+        <div class="flex flex-wrap justify-center gap-4">
+            <a href="/register" class="bg-white text-orange-600 px-10 py-4 rounded-xl font-bold text-lg hover:bg-orange-50 transition-all shadow-lg hover:shadow-xl">
+                Get Started Today
+            </a>
+            <a href="/about" class="border-2 border-white text-white px-10 py-4 rounded-xl font-bold text-lg hover:bg-white/10 transition-all">
+                Know More
+            </a>
+        </div>
+    </div>
+
+</div>
+
+<!-- SCROLL ANIMATION + COUNTER JS -->
+<style>
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+</style>
+
+<script>
+// Scroll fade-in animation
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, { threshold: 0.15 });
+
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// Animated number counter
+function animateCounter(el) {
+    const target = parseInt(el.getAttribute('data-target'));
+    const duration = 1500;
+    const step = target / (duration / 16);
+    let current = 0;
+
+    const timer = setInterval(() => {
+        current += step;
+        if (current >= target) {
+            current = target;
+            clearInterval(timer);
+        }
+        el.textContent = Math.floor(current).toLocaleString('en-IN') + (target >= 1000 ? '+' : target === 7 ? ' Yrs' : '+');
+    }, 16);
+}
+
+const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            animateCounter(entry.target);
+            counterObserver.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.5 });
+
+document.querySelectorAll('.counter').forEach(el => counterObserver.observe(el));
+</script>
+
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="flex items-center justify-center py-12">
+    <div class="bg-white p-8 rounded-xl shadow-xl border-t-8 border-orange-600 w-full max-w-md">
+        <div class="text-center mb-8">
+            <h2 class="text-3xl font-bold text-gray-800">Welcome Back</h2>
+            <p class="text-gray-500 mt-2">Sign in to your JNP Account</p>
+        </div>
+
+        <form action="/login" method="POST" class="space-y-6">
+            <div>
+                <label class="block text-sm font-semibold text-gray-700">Email Address</label>
+                <input type="email" name="email" required 
+                    class="w-full mt-1 p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:outline-none" 
+                    placeholder="Enter your email">
+            </div>
+
+            <div>
+                <label class="block text-sm font-semibold text-gray-700">Password</label>
+                <input type="password" name="password" required 
+                    class="w-full mt-1 p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:outline-none" 
+                    placeholder="••••••••">
+            </div>
+
+            <button type="submit" 
+                class="w-full bg-orange-600 text-white font-bold py-3 rounded-lg hover:bg-orange-700 transition duration-300 shadow-lg">
+                Sign In
+            </button>
+        </form>
+
+        <div class="text-center mt-6">
+            <p class="text-sm text-gray-600">New to JNP? 
+                <a href="/register" class="text-orange-600 font-bold hover:underline">Create an account</a>
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}
