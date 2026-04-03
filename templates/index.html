@@ -11,12 +11,13 @@
 
     <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
 
-    <!-- Floating badge -->
-    <div class="absolute top-8 left-8 bg-orange-500/90 backdrop-blur-sm text-white text-xs font-bold px-4 py-2 rounded-full shadow-lg animate-pulse">
-        🏅 Serving Since 2017
-    </div>
-
     <div class="relative z-10 text-center px-6 max-w-4xl">
+
+        <!-- Badge -- ab yahan hai, overlap nahi karega -->
+        <div class="inline-block bg-orange-500/90 backdrop-blur-sm text-white text-xs font-bold px-4 py-2 rounded-full shadow-lg animate-pulse mb-4">
+            🏅 Serving Since 2017
+        </div>
+
         <p class="text-white font-semibold tracking-widest uppercase text-sm mb-4">Jyeshtha Nagrik Pratishthan, Nagpur</p>
         <h1 class="text-5xl md:text-7xl font-extrabold text-white mb-6 leading-tight drop-shadow-2xl">
             Empowering Lives, <br>
@@ -157,7 +158,6 @@
 </style>
 
 <script>
-// Scroll fade-in animation
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -168,7 +168,6 @@ const observer = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-// Animated number counter
 function animateCounter(el) {
     const target = parseInt(el.getAttribute('data-target'));
     const duration = 1500;
