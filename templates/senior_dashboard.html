@@ -24,7 +24,7 @@
                     <div class="bg-white/20 backdrop-blur-sm px-5 py-2 rounded-full text-white text-sm font-semibold text-center">
                         👴 Senior Citizen Member
                     </div>
-                    <div class="bg-white/15 backdrop-blur-sm px-5 py-2 rounded-full text-orange-100 text-sm text-center">
+                    <div class="bg-white/10 backdrop-blur-sm px-5 py-2 rounded-full text-orange-100 text-sm text-center">
                         📅 Member Since 2024
                     </div>
                 </div>
@@ -301,7 +301,7 @@
 </div>
 
 <!-- SERVICE REQUEST MODAL -->
-<div id="request-modal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden items-center justify-center px-4"
+<div id="request-modal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 items-center justify-center px-4"
      style="display:none;">
     <div class="bg-white rounded-3xl p-8 max-w-md w-full shadow-2xl mx-auto mt-20">
         <div class="flex items-center justify-between mb-2">
@@ -311,7 +311,7 @@
             </div>
             <button onclick="closeRequest()" class="text-gray-400 hover:text-gray-600 text-2xl leading-none">&times;</button>
         </div>
-        <p class="text-gray-400 text-xs mb-6 ml-13">Our team will contact you within 24 hours.</p>
+        <p class="text-gray-400 text-xs mb-6 pl-13">Our team will contact you within 24 hours.</p>
 
         <form action="/submit_request" method="POST" class="space-y-4">
             <div>
@@ -344,27 +344,31 @@
     </div>
 </div>
 
+<!-- REQUEST SUCCESS MESSAGE (flash) -->
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    {% for category, message in messages %}
+      <div class="fixed bottom-6 right-6 z-50 bg-green-500 text-white px-6 py-3 rounded-2xl shadow-lg text-sm font-semibold">
+        ✅ {{ message }}
+      </div>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+
 <script>
-// Modal functions
 function openRequest(type) {
     document.getElementById('service_type').value = type;
-    const modal = document.getElementById('request-modal');
-    modal.style.display = 'flex';
-    modal.classList.remove('hidden');
+    document.getElementById('request-modal').style.display = 'flex';
 }
 
 function closeRequest() {
-    const modal = document.getElementById('request-modal');
-    modal.style.display = 'none';
-    modal.classList.add('hidden');
+    document.getElementById('request-modal').style.display = 'none';
 }
 
-// Close modal on background click
 document.getElementById('request-modal').addEventListener('click', function(e) {
     if (e.target === this) closeRequest();
 });
 
-// Profile photo upload with preview
 document.getElementById('photo-upload').addEventListener('change', function(e) {
     const file = e.target.files[0];
     if (!file) return;

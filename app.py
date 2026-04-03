@@ -1,18 +1,33 @@
 from flask import Flask, render_template, request, redirect, url_for, session
 from werkzeug.security import generate_password_hash, check_password_hash
+from flask import Flask, render_template, request, redirect, url_for, session, flash
+from functools import wraps
 import mysql.connector
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 app = Flask(__name__)
-app.secret_key = "super_secret_key_change_this"
+app.secret_key = os.environ.get('SECRET_KEY', 'ngo_jyeshtha_secret_2024')
+
+# ---------------- LOGIN REQUIRED DECORATOR ----------------
+def login_required(f):
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        if 'user_id' not in session:
+            return redirect('/login')
+        return f(*args, **kwargs)
+    return decorated_function
 
 # ---------------- DB CONNECTION FUNCTION ----------------
 def get_db_connection():
     conn = mysql.connector.connect(
-        host="localhost",
-        user="root",
-        password="shivaniii",
-        database="ngo_management"
+        host=os.environ.get('MYSQLHOST', 'interchange.proxy.rlwy.net'),
+        port=int(os.environ.get('MYSQLPORT', 39247)),
+        user=os.environ.get('MYSQLUSER', 'root'),
+        password=os.environ.get('MYSQLPASSWORD'),
+        database=os.environ.get('MYSQLDATABASE', 'railway')
     )
     return conn
 
@@ -46,7 +61,7 @@ def register():
             conn.commit()
             cursor.close()
             conn.close()
-            return redirect(url_for('login'))  # register ke baad login pe bhejo
+            return redirect(url_for('login'))
         except Exception as e:
             return f"Error: {str(e)}"
 
@@ -81,10 +96,8 @@ def login():
 
 # ---------------- DASHBOARD ----------------
 @app.route('/dashboard')
+@login_required
 def dashboard():
-    if 'user_id' not in session:
-        return redirect('/login')
-
     role = session.get('role', '').lower()
     name = session.get('full_name', 'Member')
 
@@ -99,10 +112,8 @@ def dashboard():
 
 # ---------------- UPLOAD PHOTO ----------------
 @app.route('/upload_photo', methods=['POST'])
+@login_required
 def upload_photo():
-    if 'user_id' not in session:
-        return redirect('/login')
-
     if 'photo' not in request.files:
         return redirect('/dashboard')
 
@@ -134,10 +145,8 @@ def upload_photo():
 
 # ---------------- MAKE DONATION ----------------
 @app.route('/make_donation', methods=['POST'])
+@login_required
 def make_donation():
-    if 'user_id' not in session:
-        return redirect('/login')
-
     amount = request.form.get('amount')
     purpose = request.form.get('purpose')
     payment_mode = request.form.get('payment_mode')
@@ -158,20 +167,57 @@ def make_donation():
 
     return redirect('/donation_success')
 
-
 # ---------------- DONATION SUCCESS ----------------
 @app.route('/donation_success')
+@login_required
 def donation_success():
-    if 'user_id' not in session:
-        return redirect('/login')
     return render_template('donation_success.html')
+
+# ---------------- SUBMIT SERVICE REQUEST ----------------
+# Submit Request route
+@app.route('/submit_request', methods=['POST'])
+@login_required
+def submit_request():
+    service_type = request.form.get('service_type', '')
+    description = request.form.get('description', '')
+
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    cursor.execute(
+        "INSERT INTO service_requests (user_id, service_type, description) VALUES (%s, %s, %s)",
+        (session['user_id'], service_type, description)
+    )
+    conn.commit()
+    cursor.close()
+    conn.close()
+
+    flash('Your request has been submitted successfully!')
+    return redirect('/dashboard')
+
+# ---------------- MARK ATTENDANCE ----------------
+@app.route('/mark_attendance', methods=['POST'])
+@login_required
+def mark_attendance():
+    task_name = request.form.get('task_name', '')
+    date = request.form.get('date', '')
+    note = request.form.get('note', '')
+
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    cursor.execute(
+        "INSERT INTO attendance (user_id, task_name, date, note) VALUES (%s, %s, %s, %s)",
+        (session['user_id'], task_name, date, note)
+    )
+    conn.commit()
+    cursor.close()
+    conn.close()
+
+    return render_template('attendance_success.html')
 
 # ---------------- EDIT PROFILE ----------------
 @app.route('/edit_profile', methods=['GET', 'POST'])
+@login_required
 def edit_profile():
-    if 'user_id' not in session:
-        return redirect('/login')
-
     if request.method == 'POST':
         full_name = request.form.get('full_name', '').strip()
         phone = request.form.get('phone', '').strip()
@@ -201,7 +247,6 @@ def edit_profile():
         cursor.close()
         conn.close()
 
-        # Session update
         session['full_name'] = full_name
         session['phone'] = phone
 
