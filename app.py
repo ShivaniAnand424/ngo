@@ -1,6 +1,5 @@
-from flask import Flask, render_template, request, redirect, url_for, session
-from werkzeug.security import generate_password_hash, check_password_hash
 from flask import Flask, render_template, request, redirect, url_for, session, flash
+from werkzeug.security import generate_password_hash, check_password_hash
 from functools import wraps
 import mysql.connector
 import os
@@ -23,11 +22,11 @@ def login_required(f):
 # ---------------- DB CONNECTION FUNCTION ----------------
 def get_db_connection():
     conn = mysql.connector.connect(
-        host=os.environ.get('MYSQLHOST', 'interchange.proxy.rlwy.net'),
-        port=int(os.environ.get('MYSQLPORT', 39247)),
-        user=os.environ.get('MYSQLUSER', 'root'),
+        host=os.environ.get('MYSQLHOST'),
+        port=int(os.environ.get('MYSQLPORT', 3306)),
+        user=os.environ.get('MYSQLUSER'),
         password=os.environ.get('MYSQLPASSWORD'),
-        database=os.environ.get('MYSQLDATABASE', 'railway')
+        database=os.environ.get('MYSQLDATABASE')
     )
     return conn
 
@@ -174,7 +173,6 @@ def donation_success():
     return render_template('donation_success.html')
 
 # ---------------- SUBMIT SERVICE REQUEST ----------------
-# Submit Request route
 @app.route('/submit_request', methods=['POST'])
 @login_required
 def submit_request():
